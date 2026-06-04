@@ -1,0 +1,15 @@
+{
+  "name": "Remix: Remix:  Eastrand Engine \u0026 Turbo - Job Card System",
+  "description": "Professional automotive service management with video check-in, real-time workshop chat, internal workshop notes, and customer tracking , and a stock list of all parts that is been taken and used ",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API",
+    "Job Card Management",
+    "Video Recording",
+    "Real-time Chat",
+    "Customer Portal"
+  ]
+}

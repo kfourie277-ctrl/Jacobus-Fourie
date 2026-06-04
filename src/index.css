@@ -1,0 +1,577 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+  
+  --color-primary: #cc0000;
+  --color-secondary: #1a1a1a;
+  --color-accent: #333333;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-100 text-slate-900 transition-colors duration-200;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+}
+
+/* LIGHT THEME (WHITE THEME) HIGH-CONTRAST BLACK OUTLINES FOR PAGE BOXES */
+html:not(.dark) .border-slate-100,
+html:not(.dark) .border-slate-200,
+html:not(.dark) .border-slate-205,
+html:not(.dark) .border-slate-200\/10,
+html:not(.dark) .border-slate-200\/40,
+html:not(.dark) .border-slate-200\/50,
+html:not(.dark) .border-slate-200\/60,
+html:not(.dark) .border-slate-200\/80,
+html:not(.dark) .border-slate-200\/90,
+html:not(.dark) .border-slate-300,
+html:not(.dark) .border-slate-400,
+html:not(.dark) .border-slate-500,
+html:not(.dark) .border-slate-600,
+html:not(.dark) .border-slate-700,
+html:not(.dark) .border-slate-800,
+html:not(.dark) .border-slate-900,
+html:not(.dark) .border-slate-950,
+html:not(.dark) .border,
+html:not(.dark) .border-2,
+html:not(.dark) .border-t,
+html:not(.dark) .border-b,
+html:not(.dark) .border-l,
+html:not(.dark) .border-r,
+html:not(.dark) .divide-y > *,
+html:not(.dark) .divide-x > * {
+  border-color: #000000 !important;
+}
+
+html:not(.dark) .bg-white,
+html:not(.dark) .bg-slate-50,
+html:not(.dark) .bg-slate-100,
+html:not(.dark) .bg-slate-200,
+html:not(.dark) .bg-slate-900,
+html:not(.dark) [role="dialog"],
+html:not(.dark) .relative.bg-white,
+html:not(.dark) .rounded-3xl,
+html:not(.dark) .rounded-\[2rem\],
+html:not(.dark) .rounded-2xl {
+  border: 1.5px solid #000000 !important;
+}
+
+/* Glassmorphism transparent white settings for page boxes */
+html:not(.dark) .bg-white,
+html:not(.dark) .relative.bg-white,
+html:not(.dark) [role="dialog"] {
+  background-color: rgba(255, 255, 255, 0.65) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+}
+
+html:not(.dark) .bg-slate-50 {
+  background-color: rgba(248, 250, 252, 0.55) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+}
+
+html:not(.dark) .bg-slate-100 {
+  background-color: rgba(241, 245, 249, 0.45) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+}
+
+html:not(.dark) .bg-slate-200 {
+  background-color: rgba(226, 232, 240, 0.5) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+}
+
+html:not(.dark) form,
+html:not(.dark) table,
+html:not(.dark) thead,
+html:not(.dark) th,
+html:not(.dark) td,
+html:not(.dark) tr,
+html:not(.dark) input,
+html:not(.dark) textarea,
+html:not(.dark) select,
+html:not(.dark) .shadow-md,
+html:not(.dark) .shadow-lg,
+html:not(.dark) .shadow-xl,
+html:not(.dark) .shadow-2xl {
+  border-color: #000000 !important;
+}
+
+/* Glassmorphism settings for input boxes and dropdowns */
+html:not(.dark) input:not([type="checkbox"]):not([type="radio"]),
+html:not(.dark) textarea,
+html:not(.dark) select {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+
+/* HIGH-CONTRAST WORKSHOP LOW-LIGHT BLUEPRINT MODE */
+.dark body {
+  background-color: #000000 !important; /* Pure pitch-black carbon canvas */
+  color: #f8fafc !important;
+}
+
+/* Class adaptations for standard light components container block items */
+.dark .bg-white {
+  background-color: #06090f !important; /* Low-light heavy machine-steel plate */
+  color: #f8fafc !important;
+}
+
+.dark .bg-slate-50 {
+  background-color: #0a0e17 !important;
+}
+
+.dark .bg-slate-100 {
+  background-color: #020305 !important;
+}
+
+.dark .bg-slate-200 {
+  background-color: #161e2e !important;
+  color: #f8fafc !important;
+}
+
+.dark .bg-slate-300 {
+  background-color: #1a2436 !important;
+  color: #f8fafc !important;
+}
+
+/* Adaptive opacity modifiers for dark mode to prevent white-on-white text */
+.dark .bg-slate-50\/70,
+.dark .bg-slate-50\/55,
+.dark .bg-slate-50\/50,
+.dark .bg-slate-50\/40,
+.dark .bg-slate-50\/20,
+.dark .bg-slate-50\/10 {
+  background-color: #0c1322 !important;
+}
+
+.dark .bg-slate-100\/55,
+.dark .bg-slate-100\/50,
+.dark .bg-slate-100\/40,
+.dark .bg-slate-100\/20,
+.dark .bg-slate-100\/10 {
+  background-color: rgba(2, 3, 5, 0.7) !important;
+}
+
+.dark .bg-slate-200\/55,
+.dark .bg-slate-200\/50,
+.dark .bg-slate-200\/40,
+.dark .bg-slate-200\/20 {
+  background-color: rgba(22, 30, 46, 0.6) !important;
+}
+
+.dark .bg-white\/95,
+.dark .bg-white\/90,
+.dark .bg-white\/85,
+.dark .bg-white\/80,
+.dark .bg-white\/75,
+.dark .bg-white\/70,
+.dark .bg-white\/60,
+.dark .bg-white\/50,
+.dark .bg-white\/45,
+.dark .bg-white\/40,
+.dark .bg-white\/30 {
+  background-color: rgba(6, 9, 15, 0.9) !important;
+}
+
+.dark .bg-white\/20,
+.dark .bg-white\/10,
+.dark .bg-white\/5 {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Hover background styling overrides */
+.dark .hover\:bg-slate-100:hover,
+.dark .hover\:bg-slate-50:hover {
+  background-color: #131b2c !important;
+}
+
+.dark .hover\:bg-slate-250:hover,
+.dark .hover\:bg-slate-200:hover {
+  background-color: #1b273d !important;
+}
+
+.dark .hover\:bg-slate-300:hover {
+  background-color: #24314c !important;
+}
+
+/* Borders adjustment for extreme visibility - making all page boxes and layout borders solid white */
+.dark .border-slate-100,
+.dark .border-slate-200,
+.dark .border-slate-205,
+.dark .border-slate-200\/10,
+.dark .border-slate-200\/40,
+.dark .border-slate-200\/50,
+.dark .border-slate-200\/60,
+.dark .border-slate-200\/80,
+.dark .border-slate-200\/90,
+.dark .border-slate-300,
+.dark .border-slate-400,
+.dark .border-slate-500,
+.dark .border-slate-600,
+.dark .border-slate-700,
+.dark .border-slate-850,
+.dark .border-slate-800,
+.dark .border-slate-900,
+.dark .border-slate-950,
+.dark .border,
+.dark .border-2,
+.dark .border-t,
+.dark .border-b,
+.dark .border-l,
+.dark .border-r,
+.dark .divide-y > *,
+.dark .divide-x > * {
+  border-color: #ffffff !important;
+}
+
+/* Page Boxes explicit outline white when in dark mode */
+.dark .bg-white,
+.dark .bg-slate-50,
+.dark .bg-slate-100,
+.dark .bg-slate-200,
+.dark .bg-slate-900,
+.dark [role="dialog"],
+.dark .relative.bg-white,
+.dark .rounded-3xl,
+.dark .rounded-\[2rem\],
+.dark .rounded-2xl {
+  border: 1.5px solid #ffffff !important;
+}
+
+/* Modals, custom boxes, forms input outlines and cards */
+.dark form,
+.dark table,
+.dark thead,
+.dark th,
+.dark td,
+.dark tr,
+.dark .shadow-md,
+.dark .shadow-lg,
+.dark .shadow-xl,
+.dark .shadow-2xl {
+  border-color: #ffffff !important;
+}
+
+/* Font typography low-light overrides */
+.dark .text-slate-950,
+.dark .text-slate-900,
+.dark .text-slate-800,
+.dark .text-slate-755,
+.dark .text-slate-705,
+.dark .text-slate-700 {
+  color: #f8fafc !important;
+}
+
+.dark .text-slate-650 {
+  color: #e2e8f0 !important;
+}
+
+.dark .text-slate-600,
+.dark .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+.dark .text-slate-400 {
+  color: #4e5e78 !important;
+}
+
+/* Low-light premium alerts & status tags adaptations, completely ignoring default light slops */
+
+/* Red status theme */
+.dark .bg-red-50,
+.dark .bg-red-50\/50,
+.dark .bg-red-100,
+.dark .bg-red-100\/50 {
+  background-color: #270606 !important;
+  color: #ff8a8a !important;
+}
+.dark .border-red-100,
+.dark .border-red-200,
+.dark .border-red-200\/40 {
+  border-color: #551212 !important;
+}
+.dark .text-[#cc0000],
+.dark .text-red-900,
+.dark .text-red-800,
+.dark .text-red-700,
+.dark .text-red-600 {
+  color: #ff6b6b !important;
+}
+
+/* Green & Emerald status theme */
+.dark .bg-green-50,
+.dark .bg-green-50\/50,
+.dark .bg-green-100,
+.dark .bg-green-100\/50,
+.dark .bg-emerald-50,
+.dark .bg-emerald-50\/50,
+.dark .bg-emerald-100,
+.dark .bg-emerald-100\/50 {
+  background-color: #041f0e !important;
+  color: #a7f3d0 !important;
+}
+.dark .border-green-100,
+.dark .border-emerald-100,
+.dark .border-emerald-200 {
+  border-color: #064e1c !important;
+}
+.dark .text-green-900,
+.dark .text-green-800,
+.dark .text-green-700,
+.dark .text-green-600,
+.dark .text-emerald-990,
+.dark .text-emerald-900,
+.dark .text-emerald-800,
+.dark .text-emerald-700,
+.dark .text-emerald-600 {
+  color: #4ade80 !important;
+}
+
+/* Blue status theme */
+.dark .bg-blue-50,
+.dark .bg-blue-50\/50,
+.dark .bg-blue-100,
+.dark .bg-blue-100\/50 {
+  background-color: #041026 !important;
+  color: #bfdbfe !important;
+}
+.dark .text-blue-950,
+.dark .text-blue-900,
+.dark .text-blue-800,
+.dark .text-blue-700,
+.dark .text-blue-600,
+.dark .text-blue-500 {
+  color: #60a5fa !important;
+}
+
+/* Amber & Yellow status theme */
+.dark .bg-amber-50,
+.dark .bg-amber-50\/50,
+.dark .bg-amber-100,
+.dark .bg-amber-100\/50,
+.dark .bg-yellow-50,
+.dark .bg-yellow-50\/50 {
+  background-color: #261601 !important;
+  color: #fef08a !important;
+}
+.dark .text-amber-950,
+.dark .text-amber-900,
+.dark .text-amber-800,
+.dark .text-amber-700,
+.dark .text-yellow-950,
+.dark .text-yellow-900,
+.dark .text-yellow-800,
+.dark .text-yellow-700,
+.dark .text-yellow-600 {
+  color: #fbbf24 !important;
+}
+
+/* Orange status theme */
+.dark .bg-orange-50,
+.dark .bg-orange-50\/50,
+.dark .bg-orange-100,
+.dark .bg-orange-100\/50 {
+  background-color: #2b1102 !important;
+  color: #ff9d66 !important;
+}
+.dark .text-orange-950,
+.dark .text-orange-900,
+.dark .text-orange-850,
+.dark .text-orange-800,
+.dark .text-orange-700,
+.dark .text-orange-600 {
+  color: #ffaa7d !important;
+}
+
+/* Purple status theme */
+.dark .bg-purple-50,
+.dark .bg-purple-50\/70,
+.dark .bg-purple-50\/50,
+.dark .bg-purple-100,
+.dark .bg-purple-100\/50 {
+  background-color: #241031 !important;
+  color: #e9d5ff !important;
+}
+.dark .text-purple-950,
+.dark .text-purple-900,
+.dark .text-purple-800,
+.dark .text-purple-700,
+.dark .text-purple-600 {
+  color: #c084fc !important;
+}
+
+/* Indigo status theme */
+.dark .bg-indigo-50,
+.dark .bg-indigo-50\/50,
+.dark .bg-indigo-100,
+.dark .bg-indigo-100\/50 {
+  background-color: #10113c !important;
+  color: #e0e7ff !important;
+}
+.dark .text-indigo-950,
+.dark .text-indigo-900,
+.dark .text-indigo-800,
+.dark .text-indigo-700,
+.dark .text-indigo-600 {
+  color: #818cf8 !important;
+}
+
+/* Cyan status theme */
+.dark .bg-cyan-50,
+.dark .bg-cyan-50\/50,
+.dark .bg-cyan-100,
+.dark .bg-cyan-100\/50 {
+  background-color: #081e2b !important;
+  color: #cffafe !important;
+}
+.dark .text-cyan-950,
+.dark .text-cyan-900,
+.dark .text-cyan-800,
+.dark .text-cyan-700,
+.dark .text-cyan-600 {
+  color: #22d3ee !important;
+}
+
+/* Input interfaces so typing isn't super bright */
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: #0a0e17 !important;
+  color: #f8fafc !important;
+  border-color: #1a2336 !important;
+}
+
+/* Explicit options styling for Chrome/Safari compatibility so select text is visible */
+.dark select option,
+.dark option {
+  background-color: #0a0e17 !important;
+  color: #f8fafc !important;
+}
+
+/* Explicit overlay, modal window frames, and select dropdown lists for consistent Blueprint Mode high-contrast visual safety */
+.dark .fixed.inset-0,
+.dark .fixed.inset-0.bg-slate-900\/90,
+.dark .fixed.inset-0.bg-slate-900\/70,
+.dark .fixed.inset-0.bg-slate-950\/70 {
+  background-color: rgba(2, 3, 5, 0.85) !important;
+}
+
+.dark [role="dialog"],
+.dark .relative.bg-white,
+.dark .bg-white.rounded-3xl,
+.dark .bg-white.rounded-\[2rem\] {
+  background-color: #06090f !important;
+  border-color: #16203a !important;
+  color: #f8fafc !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9) !important;
+}
+
+.dark select,
+.dark .dropdown,
+.dark .dropdown-menu {
+  background-color: #0a0e17 !important;
+  color: #f8fafc !important;
+  border-color: #16203a !important;
+}
+
+.dark select:focus {
+  outline: none !important;
+  border-color: #cc0000 !important;
+}
+
+.dark .bg-slate-50\/70,
+.dark .bg-slate-50\/50,
+.dark .bg-slate-50\/10 {
+  background-color: #0c1322 !important;
+  border-color: #16203a !important;
+}
+
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus,
+.dark .focus\:bg-white:focus {
+  background-color: #0c1322 !important;
+  color: #f8fafc !important;
+  border-color: #cc0000 !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #475569 !important;
+}
+
+/* Scroll bars styling for high technical satisfaction */
+.dark ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #04060a;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #141c2b;
+  border-radius: 5px;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #cc0000;
+}
+
+/* Smooth scaling and elegant glow on logo container hover */
+.logo-container {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  will-change: transform, filter;
+}
+.logo-container:hover {
+  transform: scale(1.05) translateY(-1px);
+  filter: drop-shadow(0 6px 16px rgba(204, 0, 0, 0.15));
+}
+.logo-container:active {
+  transform: scale(0.97) translateY(0);
+}
+
+/* Custom premium black oval logo design styles */
+.logo-oval-badge {
+  background-color: #000000 !important;
+  border: 1.5px solid #1e293b !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Explicit high-contrast pitch-black dark mode root layout rules */
+html.dark,
+html.dark body,
+html.dark #root,
+html.dark #eret-blueprint-root {
+  background-color: #000000 !important;
+  color: #f8fafc !important;
+}
+
+/* Fix dark mode for eret engine bg image */
+html.dark .eret-engine-bg-image {
+  mix-blend-mode: screen !important;
+  filter: invert(100%) !important;
+  opacity: 0.35 !important;
+}
+
+/* Custom premium equalizer bar animations */
+@keyframes equalizer {
+  0% {
+    height: 3px;
+  }
+  100% {
+    height: 12px;
+  }
+}
+
+
+

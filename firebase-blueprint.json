@@ -1,0 +1,242 @@
+{
+  "entities": {
+    "JobCard": {
+      "title": "Job Card",
+      "description": "Information about a vehicle service job.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "jobCardNo": { "type": "string" },
+        "customerCode": { "type": "string" },
+        "status": { "type": "string", "enum": ["Check-in", "In Progress", "Awaiting Parts", "Quality Control", "Ready for Collection", "Completed"] },
+        "clientInfo": {
+          "type": "object",
+          "properties": {
+            "companyName": { "type": "string" },
+            "firstName": { "type": "string" },
+            "surname": { "type": "string" },
+            "email": { "type": "string" },
+            "tel": { "type": "string" },
+            "cell": { "type": "string" },
+            "address": { "type": "string" }
+          }
+        },
+        "vehicleDetails": {
+          "type": "object",
+          "properties": {
+            "make": { "type": "string" },
+            "model": { "type": "string" },
+            "year": { "type": "string" },
+            "color": { "type": "string" },
+            "registrationNo": { "type": "string" },
+            "engineNo": { "type": "string" },
+            "chassisNo": { "type": "string" },
+            "odometerIn": { "type": "string" },
+            "odometerOut": { "type": "string" },
+            "transmission": { "type": "string", "enum": ["Automatic", "Manual"] },
+            "driveType": { "type": "string", "enum": ["4x4", "4x2"] },
+            "fuelType": { "type": "string", "enum": ["Petrol", "Diesel"] }
+          }
+        },
+        "workDetails": {
+          "type": "object",
+          "properties": {
+            "workRequested": { "type": "string" },
+            "serviceType": { "type": "array", "items": { "type": "string" } },
+            "estimatedCost": { "type": "number" },
+            "authorisedCost": { "type": "number" }
+          }
+        },
+        "condition": {
+          "type": "object",
+          "properties": {
+            "hasDents": { "type": "boolean" },
+            "hasScratches": { "type": "boolean" },
+            "fuelLevel": { "type": "string" },
+            "otherNotes": { "type": "string" }
+          }
+        },
+        "recordings": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "checklist": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "task": { "type": "string" },
+              "completed": { "type": "boolean" },
+              "completedAt": { "type": "string", "format": "date-time" },
+              "completedBy": { "type": "string" }
+            }
+          }
+        },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "syncedWithV2": { "type": "boolean" },
+        "isV2Imported": { "type": "boolean" },
+        "v2SyncedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["jobCardNo", "customerCode", "status"]
+    },
+    "ChatMessage": {
+      "title": "Chat Message",
+      "description": "A message sent in the workshop chat.",
+      "type": "object",
+      "properties": {
+        "text": { "type": "string" },
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "senderEmail": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["text", "senderId", "timestamp"]
+    },
+    "Part": {
+      "title": "Part",
+      "description": "A part used in a service job.",
+      "type": "object",
+      "properties": {
+        "jobCardId": { "type": "string" },
+        "name": { "type": "string" },
+        "quantity": { "type": "number" },
+        "price": { "type": "number" },
+        "description": { "type": "string" }
+      },
+      "required": ["jobCardId", "name", "quantity"]
+    },
+    "JobNote": {
+      "title": "Job Note",
+      "description": "An internal comment or update on a job card.",
+      "type": "object",
+      "properties": {
+        "jobCardId": { "type": "string" },
+        "text": { "type": "string" },
+        "authorName": { "type": "string" },
+        "authorEmail": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["jobCardId", "text", "authorName", "createdAt"]
+    },
+    "Admin": {
+      "title": "Admin",
+      "description": "User with administrative privileges.",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "name": { "type": "string" }
+      },
+      "required": ["email"]
+    },
+    "WorkshopSession": {
+      "title": "Workshop Session",
+      "description": "Proof of PIN validation for workshop staff.",
+      "type": "object",
+      "properties": {
+        "createdAt": { "type": "string", "format": "date-time" },
+        "expiresAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["createdAt", "expiresAt"]
+    },
+    "CustomerCodeMapping": {
+      "title": "Customer Code Mapping",
+      "description": "Enables zero-trust single-document retrieval by customer code, avoiding PII list query leaks.",
+      "type": "object",
+      "properties": {
+        "jobCardId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["jobCardId"]
+    },
+    "Technician": {
+      "title": "Technician",
+      "description": "Technician of the workshop.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "specialization": { "type": "string" },
+        "active": { "type": "boolean" }
+      },
+      "required": ["name", "active"]
+    },
+    "Quote": {
+      "title": "Quote",
+      "description": "An estimate or custom Quote generated for service work.",
+      "type": "object",
+      "properties": {
+        "quoteNo": { "type": "string" },
+        "jobCardId": { "type": "string" },
+        "jobCardNo": { "type": "string" },
+        "date": { "type": "string" },
+        "expiryDate": { "type": "string" },
+        "subtotal": { "type": "number" },
+        "includeVat": { "type": "boolean" },
+        "vatAmount": { "type": "number" },
+        "totalAmount": { "type": "number" },
+        "status": { "type": "string", "enum": ["Draft", "Sent", "Accepted", "Rejected"] },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "sharedWithOffice": { "type": "boolean" }
+      },
+      "required": ["quoteNo", "date", "totalAmount", "status"]
+    }
+  },
+  "firestore": {
+    "/workshop_sessions/{uid}": {
+      "schema": "WorkshopSession",
+      "description": "Active workshop staff sessions verified by PIN."
+    },
+    "/customerCodes/{customerCode}": {
+      "schema": "CustomerCodeMapping",
+      "description": "Safe, non-listable mapping pointing a 6-digit access code to its associated jobCardId."
+    },
+    "/parts/{partId}": {
+      "schema": "Part",
+      "description": "Parts data, linked to a job card via jobCardId."
+    },
+    "/jobCards/{jobCardId}": {
+      "schema": "JobCard",
+      "description": "Main collection for job cards."
+    },
+    "/jobCards/{jobCardId}/notes/{noteId}": {
+      "schema": "JobNote",
+      "description": "Internal updates and technician notes for a job card."
+    },
+    "/chatMessages/{messageId}": {
+      "schema": "ChatMessage",
+      "description": "Internal workshop/office chat."
+    },
+    "/admins/{adminId}": {
+      "schema": "Admin",
+      "description": "List of authorized admins."
+    },
+    "/settings/workshop": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "pin": { "type": "string" },
+          "updatedAt": { "type": "string", "format": "date-time" },
+          "updatedBy": { "type": "string" }
+        }
+      },
+      "description": "Global workshop access configuration."
+    },
+    "/jobCardDrafts/{draftId}": {
+      "schema": "JobCard",
+      "description": "Temporary draft autosaves for job cards currently being edited or created."
+    },
+    "/technicians/{techId}": {
+      "schema": "Technician",
+      "description": "Workshop technician records list."
+    },
+    "/quotes/{quoteId}": {
+      "schema": "Quote",
+      "description": "Estimates and Quotes generated for customers."
+    }
+  }
+}
